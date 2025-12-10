@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Richiesta Urgenza</title>
+  </head>
+
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f8;
+      font-family: Arial, Helvetica, sans-serif;
+    "
+  >
+    <table
+      width="100%"
+      cellpadding="0"
+      cellspacing="0"
+      style="background-color: #f4f6f8; padding: 30px 0"
+    >
+      <tr>
+        <td align="center">
+          <!-- Card -->
+          <table
+            width="100%"
+            cellpadding="0"
+            cellspacing="0"
+            style="
+              max-width: 600px;
+              background: #ffffff;
+              border-radius: 6px;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+              overflow: hidden;
+            "
+          >
+            <!-- Header -->
+            <tr>
+              <td style="background: #0a2540; padding: 18px 24px">
+                <h1
+                  style="
+                    margin: 0;
+                    color: #ffffff;
+                    font-size: 20px;
+                    font-weight: 600;
+                  "
+                >
+                  🚨 Nuova richiesta di urgenza
+                </h1>
+              </td>
+            </tr>
+
+            <!-- Intro -->
+            <tr>
+              <td style="padding: 24px 24px 10px">
+                <p style="margin: 0; font-size: 14px; color: #333333">
+                  Il chatbot ha ricevuto una nuova richiesta che richiede
+                  contatto immediato.
+                </p>
+              </td>
+            </tr>
+
+            <!-- Data block -->
+            <tr>
+              <td style="padding: 14px 24px 24px">
+                <table
+                  width="100%"
+                  style="background: #f8fafc; border-radius: 4px; padding: 16px"
+                >
+                  <tr>
+                    <td style="font-size: 13px; color: #666666; width: 90px">
+                      Nome
+                    </td>
+                    <td
+                      style="font-size: 15px; color: #0a2540; font-weight: 600"
+                    >
+                      <%= nome && nome.trim() !== "" ? nome : "Non fornito" %>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="2" style="height: 10px"></td>
+                  </tr>
+
+                  <tr>
+                    <td style="font-size: 13px; color: #666666">Telefono</td>
+                    <td
+                      style="font-size: 16px; color: #e63946; font-weight: 700"
+                    >
+                      <%= telefono %>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- CTA -->
+            <tr>
+              <td style="padding: 8px 24px 26px">
+                <p
+                  style="
+                    margin: 0;
+                    text-align: center;
+                    font-size: 13px;
+                    color: #0a2540;
+                  "
+                >
+                  <strong>Priorità alta:</strong> contattare l’utente il prima
+                  possibile.
+                </p>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td
+                style="background: #f1f3f5; padding: 14px; text-align: center"
+              >
+                <p style="margin: 0; font-size: 11px; color: #777777">
+                  Email automatica generata dal sistema Chatbot Iginius
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+# Node modules
+node_modules/
+
+# File di log locali
+data/email-log.json
+
+# File di configurazione sensibili
+.env
+
+# OS e editor
+.DS_Store
+*.log
