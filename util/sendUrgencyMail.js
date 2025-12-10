@@ -4,6 +4,19 @@ const path = require("path");
 require("dotenv").config();
 const { logEmail } = require("./logEmail");
 
+function formatDateTime(date) {
+  const dd = String(date.getDate()).padStart(2, "0");
+  const mm = String(date.getMonth() + 1).padStart(2, "0"); // mesi 0-11
+  const yyyy = date.getFullYear();
+  const hh = String(date.getHours()).padStart(2, "0");
+  const min = String(date.getMinutes()).padStart(2, "0");
+
+  return {
+    date: `${dd}/${mm}/${yyyy}`,
+    time: `${hh}:${min}`,
+  };
+}
+
 async function sendUrgencyMail({ nome, telefono }) {
   try {
     const transporter = nodemailer.createTransport({
@@ -19,16 +32,22 @@ async function sendUrgencyMail({ nome, telefono }) {
     // Path della view EJS
     const templatePath = path.join(__dirname, "../views/urgency.ejs");
 
+    const now = new Date();
+    const { date, time } = formatDateTime(now);
+
     // Renderizza la view con i dati
     const htmlContent = await ejs.renderFile(templatePath, {
       nome,
       telefono,
+      date,
+      time,
     });
 
     // Invia la mail
     const info = await transporter.sendMail({
       from: `"Chatbot Iginius" <${process.env.EMAIL_SEND}>`,
-      to: process.env.MAIL_TO || "info@studiodalessandrosicurella.com",
+      to: process.env.MAIL_TO || "domenico.cicero@iginius.net",
+      // to: process.env.MAIL_TO || "info@studiodalessandrosicurella.com",
       subject: "Nuova richiesta URGENZA dal chatbot",
       html: htmlContent,
     });
