@@ -105,11 +105,29 @@
                   </tr>
 
                   <tr>
+                    <td colspan="2" style="height: 10px"></td>
+                  </tr>
+
+                  <tr>
                     <td style="font-size: 13px; color: #666666">Ora</td>
                     <td
                       style="font-size: 15px; color: #0a2540; font-weight: 600"
                     >
                       <%= time %>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="2" style="height: 10px"></td>
+                  </tr>
+
+                  <tr>
+                    <td style="font-size: 13px; color: #666666">Descrizione</td>
+                    <td
+                      style="font-size: 15px; color: #0a2540; font-weight: 600"
+                    >
+                      <%= descrizione && descrizione.trim() !== "" ? descrizione
+                      : "Nessuna Descrizione" %>
                     </td>
                   </tr>
                 </table>

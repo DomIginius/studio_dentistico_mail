@@ -10,13 +10,13 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.post("/urgenza", async (req, res) => {
-  const { nome, telefono } = req.body;
+  const { nome, telefono, descrizione } = req.body;
   if (!telefono) {
     return res.status(400).json({ error: "Campi richiesti: nome, telefono" });
   }
 
   try {
-    await sendUrgencyMail({ nome, telefono });
+    await sendUrgencyMail({ nome, telefono, descrizione });
     res.status(200).json({ message: "Email inviata con successo" });
   } catch (err) {
     res.status(500).json({ error: "Errore invio email" });
@@ -32,6 +32,9 @@ app.get("/email-logs", (req, res) => {
       const data = fs.readFileSync(logFile, "utf-8").trim();
       if (data) logs = JSON.parse(data);
     }
+
+    // Ordina i log per timestamp decrescente (più recente prima)
+    logs.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
     res.render("log", { logs, pageTitle: "Email Logs" });
   } catch (err) {
